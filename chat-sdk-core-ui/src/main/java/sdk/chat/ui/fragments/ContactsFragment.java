@@ -8,6 +8,7 @@
 package sdk.chat.ui.fragments;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,11 +16,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.LayoutRes;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+
 
 import com.jakewharton.rxrelay2.PublishRelay;
 
@@ -39,8 +43,13 @@ import sdk.chat.core.session.ChatSDK;
 import sdk.chat.core.types.ConnectionType;
 import sdk.chat.core.types.SearchActivityType;
 import sdk.chat.core.utils.UserListItemConverter;
+import sdk.chat.ui.AppAudioCall;
+import sdk.chat.ui.AudioActivity;
 import sdk.chat.ui.ChatSDKUI;
+import sdk.chat.ui.ContactListviewAdapter;
+import sdk.chat.ui.DemoContact;
 import sdk.chat.ui.R;
+import sdk.chat.ui.VideoActivity;
 import sdk.chat.ui.adapters.UsersListAdapter;
 import sdk.chat.ui.interfaces.SearchSupported;
 import sdk.chat.ui.provider.MenuItemProvider;
@@ -64,8 +73,19 @@ public class ContactsFragment extends BaseFragment implements SearchSupported {
 
     protected List<User> sourceUsers = new ArrayList<>();
 
-    protected RecyclerView recyclerView;
+
     protected FrameLayout root;
+
+    protected Button voiceCall;
+    protected Button button2;
+
+    protected Button sipCall;
+
+    ContactListviewAdapter adapter1;
+
+    ListView listview;
+
+
 
     @Override
     protected @LayoutRes int getLayout() {
@@ -76,8 +96,74 @@ public class ContactsFragment extends BaseFragment implements SearchSupported {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
 
-        recyclerView = view.findViewById(R.id.recyclerView);
+
         root = view.findViewById(R.id.root);
+
+        listview = view.findViewById(R.id.listView);
+
+
+
+
+//        voiceCall = view.findViewById(R.id.voiceCall);
+//        button2 = view.findViewById(R.id.button2);
+//        sipCall = view.findViewById(R.id.sipCall);
+
+
+        DemoContact jubairContact = new DemoContact("Jubair",525252);
+        DemoContact sazidContact = new DemoContact("Sazid",8000);
+        DemoContact easinContact = new DemoContact("Easin",8002);
+        DemoContact avijitContact = new DemoContact("Avijit",121212);
+
+        ArrayList<DemoContact> arrayList = new ArrayList<>();
+
+        arrayList.add(jubairContact);
+        arrayList.add(sazidContact);
+        arrayList.add(easinContact);
+        arrayList.add(avijitContact);
+
+        adapter1 = new ContactListviewAdapter(getContext(),arrayList);
+        listview.setAdapter(adapter1);
+
+
+
+//        sipCall.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Intent intent = new Intent(getContext(), AudioActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+
+
+
+//                voiceCall.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Intent intent = new Intent(getContext(), VideoActivity.class);
+//                intent.putExtra("type","audio");
+//                startActivity(intent);
+//            }
+//        });
+
+
+
+//        button2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getContext(), VideoActivity.class);
+//                intent.putExtra("type","video");
+//                startActivity(intent);
+//            }
+//        });
+
+
+
+
+
+
+
 
         initViews();
 
@@ -154,8 +240,7 @@ public class ContactsFragment extends BaseFragment implements SearchSupported {
         // override the adapter given from the extended class with setAdapter.
         adapter = new UsersListAdapter();
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(adapter);
+
     }
 
     @Override

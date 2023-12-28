@@ -50,7 +50,7 @@ public class KeyboardTestActivity2 extends AppCompatActivity {
 //        View decor = getWindow().getDecorView();
 //        View rootView = decor.findViewById(android.R.id.content);
 
-        button = findViewById(R.id.button);
+        button = findViewById(R.id.sipCall);
         et = findViewById(R.id.edit);
         options = findViewById(R.id.options);
 

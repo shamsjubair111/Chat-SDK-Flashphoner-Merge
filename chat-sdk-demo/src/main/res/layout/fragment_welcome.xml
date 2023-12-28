@@ -16,7 +16,7 @@
         app:srcCompat="@drawable/ic_logo_big" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/videoCall"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_margin="40dp"

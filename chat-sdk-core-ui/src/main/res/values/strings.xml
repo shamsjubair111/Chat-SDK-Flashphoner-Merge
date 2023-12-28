@@ -1,4 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name" translatable="false">Chat SDK UI</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" translatable="false" tools:ignore="DuplicateDefinition">Chat SDK UI</string>
+    <string name="prompt_wcs_url" tools:ignore="ExtraTranslation,MissingTranslation">WCS Url</string>
+    <string name="action_connect" tools:ignore="ExtraTranslation,MissingTranslation">Connect</string>
+    <string name="action_connect_token" tools:ignore="ExtraTranslation,MissingTranslation">Connect with token</string>
+    <string name="action_disconnect" tools:ignore="ExtraTranslation,MissingTranslation">Disconnect</string>
+    <string name="wcs_url" tools:ignore="ExtraTranslation,MissingTranslation">wss://demo.flashphoner.com:8443</string>
+    <string name="register_required" tools:ignore="ExtraTranslation,MissingTranslation">Register required</string>
+    <string name="prompt_callee" tools:ignore="ExtraTranslation,MissingTranslation">Callee</string>
+    <string name="default_callee_name" tools:ignore="ExtraTranslation,MissingTranslation">1001</string>
+    <string name="sip_port" tools:ignore="ExtraTranslation,MissingTranslation">5060</string>
+    <string name="prompt_sip_port" tools:ignore="ExtraTranslation,MissingTranslation">Sip Port</string>
+    <string name="prompt_sip_domain" tools:ignore="ExtraTranslation,MissingTranslation">Sip Domain</string>
+    <string name="prompt_sip_password" tools:ignore="ExtraTranslation,MissingTranslation">Sip Password</string>
+    <string name="prompt_sip_login" tools:ignore="ExtraTranslation,MissingTranslation">Sip Login</string>
+    <string name="sip_login" tools:ignore="ExtraTranslation,MissingTranslation">1000</string>
+    <string name="sip_password" tools:ignore="ExtraTranslation,MissingTranslation">1234</string>
+    <string name="sip_domain" tools:ignore="ExtraTranslation,MissingTranslation">192.168.0.1</string>
+    <string name="action_call" tools:ignore="ExtraTranslation,MissingTranslation">Call</string>
+    <string name="action_hangup" tools:ignore="ExtraTranslation,MissingTranslation">Hangup</string>
+    <string name="action_hold" tools:ignore="ExtraTranslation,MissingTranslation">Hold</string>
+    <string name="action_unhold" tools:ignore="ExtraTranslation,MissingTranslation">Unhold</string>
+    <string name="googechocancellation" tools:ignore="ExtraTranslation,MissingTranslation">googEchoCancellation</string>
+    <string name="googautogaincontrol" tools:ignore="ExtraTranslation,MissingTranslation">googAutoGainControl</string>
+    <string name="googhighpassfilter" tools:ignore="ExtraTranslation,MissingTranslation">googHighpassFilter</string>
+    <string name="goognoisesupression" tools:ignore="ExtraTranslation,MissingTranslation">googNoiseSupression</string>
+    <string name="googechocancellation2" tools:ignore="ExtraTranslation,MissingTranslation">googEchoCancellation2</string>
+    <string name="googautogaincontrol2" tools:ignore="ExtraTranslation,MissingTranslation">googAutoGainControl2</string>
+    <string name="goognoiseSuppression2" tools:ignore="ExtraTranslation,MissingTranslation">googNoiseSuppression2</string>
+    <string name="proximitySensor" tools:ignore="ExtraTranslation,MissingTranslation">proximitySensor</string>
+    <string name="speakerPhone" tools:ignore="ExtraTranslation,MissingTranslation">speakerPhone</string>
+    <string name="action_dtmf" tools:ignore="ExtraTranslation,MissingTranslation">Send DTMF</string>
+    <string name="prompt_dtmf" tools:ignore="ExtraTranslation,MissingTranslation">dtmf</string>
+    <string name="invite_parameters" tools:ignore="ExtraTranslation,MissingTranslation">{"header":"value"}</string>
+    <string name="prompt_invite_parameters" tools:ignore="ExtraTranslation,MissingTranslation">Invite Parameters</string>
+    <string name="prompt_auth_token" tools:ignore="ExtraTranslation,MissingTranslation">Auth Token</string>
+
+    <string name="prompt_login" tools:ignore="ExtraTranslation">Login</string>
+    <string name="prompt_join_room" tools:ignore="ExtraTranslation">Room</string>
+    <string name="prompt_message" tools:ignore="ExtraTranslation">Message</string>
+
+
+    <string name="action_join" tools:ignore="ExtraTranslation">Join</string>
+    <string name="action_leave" tools:ignore="ExtraTranslation">Leave</string>
+    <string name="action_publish" tools:ignore="ExtraTranslation">Publish</string>
+    <string name="action_stop" tools:ignore="ExtraTranslation">Stop</string>
+    <string name="action_send" tools:ignore="ExtraTranslation">Send</string>
+
+    <string name="mute_audio" tools:ignore="ExtraTranslation">Mute Audio</string>
+    <string name="mute_video" tools:ignore="ExtraTranslation">Mute Video</string>
 </resources>

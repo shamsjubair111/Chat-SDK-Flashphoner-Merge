@@ -24,7 +24,7 @@ public class WelcomeFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
 
-        button = view.findViewById(R.id.button);
+        button = view.findViewById(R.id.videoCall);
 
         initViews();
 

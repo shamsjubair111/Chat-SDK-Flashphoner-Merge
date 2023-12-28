@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/appVideoCall"
+        android:title="App Video Call"></item>
+
+    <item android:id="@+id/appAudioCall"
+        android:title="App Audio Call"></item>
+
+    <item android:id="@+id/sipCall"
+        android:title="Sip Call"></item>
+
+</menu>

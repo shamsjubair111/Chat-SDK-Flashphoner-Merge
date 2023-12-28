@@ -24,7 +24,7 @@
             />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/videoCall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Open Keyboard"
@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionNone"
-            android:layout_below="@id/button"
+            android:layout_below="@id/videoCall"
             />
 
         <View

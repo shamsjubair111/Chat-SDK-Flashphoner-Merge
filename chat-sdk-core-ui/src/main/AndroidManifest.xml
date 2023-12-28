@@ -1,83 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <!--For capturing photos in profile and chat UI-->
-    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <!-- For capturing photos in profile and chat UI -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:requestLegacyExternalStorage="true"
         android:hardwareAccelerated="true"
-        >
+        android:requestLegacyExternalStorage="true">
+        <activity
+            android:name=".AppAudioCall"
+            android:exported="false" />
+        <activity
+            android:name=".TestContactListView"
+            android:exported="false" />
+        <activity
+            android:name=".VideoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AudioActivity"
+            android:exported="false" />
 
-        <meta-data android:name="android.max_aspect" android:value="2.6" />
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.6" />
 
         <activity android:name=".activities.LoginActivity" />
-
-        <activity android:name=".activities.SplashScreenActivity"
+        <activity
+            android:name=".activities.SplashScreenActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="fullUser"
-            />
-
-        <activity android:name=".settings.SettingsActivity"
+            android:screenOrientation="fullUser" />
+        <activity
+            android:name=".settings.SettingsActivity"
             android:windowSoftInputMode="stateHidden" />
-
-        <activity android:name=".activities.thread.details.ThreadDetailsActivity"
+        <activity
+            android:name=".activities.thread.details.ThreadDetailsActivity"
             android:windowSoftInputMode="stateHidden" />
-
-        <activity android:name=".activities.CreateThreadActivity"
+        <activity
+            android:name=".activities.CreateThreadActivity"
             android:windowSoftInputMode="stateHidden" />
-
-        <activity android:name=".activities.EditThreadActivity"
-            android:windowSoftInputMode="adjustResize"
-            />
-
-        <activity android:name=".activities.EditProfileActivity"
+        <activity
+            android:name=".activities.EditThreadActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activities.EditProfileActivity"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-
-        <activity android:name=".activities.PostRegistrationActivity"
-            android:windowSoftInputMode="adjustPan"
-            />
-
-        <activity android:name=".activities.SearchActivity"
+        <activity
+            android:name=".activities.PostRegistrationActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activities.SearchActivity"
             android:windowSoftInputMode="stateVisible" />
-
-        <activity android:name=".recycler.ModerationActivity"
+        <activity
+            android:name=".recycler.ModerationActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
-
-        <activity android:name=".activities.ProfileActivity"
-            android:windowSoftInputMode="stateHidden"
-            />
-
-        <activity android:name=".activities.MainAppBarActivity"
-            android:screenOrientation="fullUser"
-            android:windowSoftInputMode="stateHidden|adjustResize"/>
-<!--        android:configChanges="orientation|screenSize"-->
-
-        <activity android:name=".activities.AddUsersToThreadActivity"
+        <activity
+            android:name=".activities.ProfileActivity"
             android:windowSoftInputMode="stateHidden" />
-
-        <activity android:name=".activities.ForwardMessageActivity"
-            android:windowSoftInputMode="stateHidden" />
-
-        <activity android:name=".activities.ChatActivity"
+        <activity
+            android:name=".activities.MainAppBarActivity"
             android:screenOrientation="fullUser"
+            android:windowSoftInputMode="stateHidden|adjustResize" /> <!-- android:configChanges="orientation|screenSize" -->
+        <activity
+            android:name=".activities.AddUsersToThreadActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.ForwardMessageActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.ChatActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="adjustResize"
-            />
-
-        <activity android:name=".activities.preview.ChatPreviewActivity"
-            android:configChanges="orientation|screenSize"
             android:screenOrientation="fullUser"
-            />
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activities.preview.ChatPreviewActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="fullUser" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -86,8 +92,8 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
+                android:resource="@xml/file_paths" />
         </provider>
-
     </application>
+
 </manifest>
