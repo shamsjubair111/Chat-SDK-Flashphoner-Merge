@@ -3,6 +3,7 @@ package sdk.chat.ui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.Manifest;
 import android.content.Context;
@@ -117,6 +118,9 @@ public class AudioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_audio);
+
+//        Intent intent = getIntent();
+//        String callee = intent.getStringExtra("callee");
 
 
         TextView policyTextView = (TextView) findViewById(R.id.privacy_policy);
@@ -469,7 +473,7 @@ public class AudioActivity extends AppCompatActivity {
                         mConnectTokenButton.setEnabled(true);
                         if (!mSipRegisterRequiredView.isChecked() || connectWithToken) {
 //                            mConnectStatus.setText(connection.getStatus());
-                            mConnectStatus.setText("Calling 8000");
+                            mConnectStatus.setText("Calling " + getIntent().getStringExtra("callee"));
 
                             mCallButton.setEnabled(true);
                         } else {
@@ -583,7 +587,7 @@ public class AudioActivity extends AppCompatActivity {
                     /**
                      * Get call options from the callee text field
                      */
-                    CallOptions callOptions = new CallOptions("525252");
+                    CallOptions callOptions = new CallOptions(getIntent().getStringExtra("callee"));
                     AudioConstraints audioConstraints = callOptions.getConstraints().getAudioConstraints();
                     MediaConstraints mediaConstraints = audioConstraints.getMediaConstraints();
 

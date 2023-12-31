@@ -71,6 +71,7 @@ public class ContactListviewAdapter extends ArrayAdapter<DemoContact> {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(getContext(),AudioActivity.class);
+                    intent.putExtra("  ", list.get(position).getNumber());
                     getContext().startActivity(intent);
                 }
             });

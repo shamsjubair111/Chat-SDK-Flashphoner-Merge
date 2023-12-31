@@ -1,9 +1,11 @@
 package sdk.chat.ui;
 
+
+
 public class DemoContact {
 
     String name;
-    int number;
+    String number;
 
     public String getName() {
         return name;
@@ -13,15 +15,15 @@ public class DemoContact {
         this.name = name;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
-    public DemoContact(String name, int number) {
+    public DemoContact(String name, String number) {
         this.name = name;
         this.number = number;
     }

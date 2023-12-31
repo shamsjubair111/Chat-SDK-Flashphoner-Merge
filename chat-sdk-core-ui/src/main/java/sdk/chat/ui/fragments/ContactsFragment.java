@@ -108,18 +108,26 @@ public class ContactsFragment extends BaseFragment implements SearchSupported {
 //        button2 = view.findViewById(R.id.button2);
 //        sipCall = view.findViewById(R.id.sipCall);
 
+        DemoContact mustafaVaiContact = new DemoContact("Mustafa Vai","8801754105098");
+        DemoContact jubairContact = new DemoContact("Jubair","8801730330016");
+        DemoContact marufContact = new DemoContact("Maruf Vai","8801932383889");
+        DemoContact appleContact = new DemoContact("Apple Vai", "8801743801850");
+        DemoContact easinContact = new DemoContact("Easin Vai", "8801941199607");
+        DemoContact avijitContact = new DemoContact("Avijit Da","8801730330021");
+        DemoContact sazidContact = new DemoContact("Sazid Vai", "8801730042594");
 
-        DemoContact jubairContact = new DemoContact("Jubair",525252);
-        DemoContact sazidContact = new DemoContact("Sazid",8000);
-        DemoContact easinContact = new DemoContact("Easin",8002);
-        DemoContact avijitContact = new DemoContact("Avijit",121212);
+
 
         ArrayList<DemoContact> arrayList = new ArrayList<>();
 
+        arrayList.add(mustafaVaiContact);
         arrayList.add(jubairContact);
-        arrayList.add(sazidContact);
+        arrayList.add(appleContact);
         arrayList.add(easinContact);
+        arrayList.add(marufContact);
         arrayList.add(avijitContact);
+        arrayList.add(sazidContact);
+
 
         adapter1 = new ContactListviewAdapter(getContext(),arrayList);
         listview.setAdapter(adapter1);
