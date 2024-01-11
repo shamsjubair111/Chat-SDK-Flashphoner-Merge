@@ -7,9 +7,14 @@
 
 package sdk.chat.ui.fragments;
 
+import static sdk.chat.ui.ContactUtils.contactArrayList;
+
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,6 +28,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 
 import com.jakewharton.rxrelay2.PublishRelay;
@@ -46,7 +54,9 @@ import sdk.chat.core.utils.UserListItemConverter;
 import sdk.chat.ui.AppAudioCall;
 import sdk.chat.ui.AudioActivity;
 import sdk.chat.ui.ChatSDKUI;
+import sdk.chat.ui.ContactList;
 import sdk.chat.ui.ContactListviewAdapter;
+import sdk.chat.ui.ContactUtils;
 import sdk.chat.ui.DemoContact;
 import sdk.chat.ui.R;
 import sdk.chat.ui.VideoActivity;
@@ -85,6 +95,8 @@ public class ContactsFragment extends BaseFragment implements SearchSupported {
 
     ListView listview;
 
+    private static final int REQUEST_READ_CONTACTS = 123; // You can use any integer value
+
 
 
     @Override
@@ -99,6 +111,16 @@ public class ContactsFragment extends BaseFragment implements SearchSupported {
 
         root = view.findViewById(R.id.root);
 
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_CONTACTS)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Permission is not granted, request it
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_CONTACTS}, REQUEST_READ_CONTACTS);
+        } else {
+            // Permission is already granted, you can proceed with accessing contacts
+            ContactUtils.getContacts(getActivity());
+        }
+
+
         listview = view.findViewById(R.id.listView);
 
 
@@ -108,29 +130,35 @@ public class ContactsFragment extends BaseFragment implements SearchSupported {
 //        button2 = view.findViewById(R.id.button2);
 //        sipCall = view.findViewById(R.id.sipCall);
 
-        DemoContact mustafaVaiContact = new DemoContact("Mustafa Vai","8801754105098");
-        DemoContact jubairContact = new DemoContact("Jubair","8801730330016");
-        DemoContact marufContact = new DemoContact("Maruf Vai","8801932383889");
-        DemoContact appleContact = new DemoContact("Apple Vai", "8801743801850");
-        DemoContact easinContact = new DemoContact("Easin Vai", "8801941199607");
-        DemoContact avijitContact = new DemoContact("Avijit Da","8801730330021");
-        DemoContact sazidContact = new DemoContact("Sazid Vai", "8801730042594");
+//        DemoContact mustafaVaiContact = new DemoContact("Mustafa Vai","8801754105098");
+//        DemoContact jubairContact = new DemoContact("Jubair","8801730330016");
+//        DemoContact marufContact = new DemoContact("Maruf Vai","8801932383889");
+//        DemoContact appleContact = new DemoContact("Apple Vai", "8801743801850");
+//        DemoContact easinContact = new DemoContact("Easin Vai", "8801941199607");
+//        DemoContact avijitContact = new DemoContact("Avijit Da","8801730330021");
+//        DemoContact sazidContact = new DemoContact("Sazid Vai", "8801730042594");
 
 
 
-        ArrayList<DemoContact> arrayList = new ArrayList<>();
+//        ArrayList<ContactList> arrayList = new ArrayList<>();
 
-        arrayList.add(mustafaVaiContact);
-        arrayList.add(jubairContact);
-        arrayList.add(appleContact);
-        arrayList.add(easinContact);
-        arrayList.add(marufContact);
-        arrayList.add(avijitContact);
-        arrayList.add(sazidContact);
+//        arrayList.add(mustafaVaiContact);
+//        arrayList.add(jubairContact);
+//        arrayList.add(appleContact);
+//        arrayList.add(easinContact);
+//        arrayList.add(marufContact);
+//        arrayList.add(avijitContact);
+//        arrayList.add(sazidContact);
 
 
-        adapter1 = new ContactListviewAdapter(getContext(),arrayList);
+        adapter1 = new ContactListviewAdapter(getActivity(),contactArrayList);
+//        Log.e("Adapter","Adapter Called");
+//        for(int i = 0 ; i<contactArrayList.size();i++){
+//            Log.e("Contact Nameswqe",contactArrayList.get(i).getContactName()+ "---------"+contactArrayList.get(i).getContactNumber());
+//        }
         listview.setAdapter(adapter1);
+
+
 
 
 
@@ -345,6 +373,20 @@ public class ContactsFragment extends BaseFragment implements SearchSupported {
     public void filter(String text) {
         filter = text;
         loadData(false);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == REQUEST_READ_CONTACTS) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission granted, proceed with accessing contacts
+                ContactUtils.getContacts(getContext());
+            } else {
+                // Permission denied, handle accordingly (e.g., show a message or take alternative actions)
+            }
+        }
     }
 
     public List<User> filter(List<User> users) {

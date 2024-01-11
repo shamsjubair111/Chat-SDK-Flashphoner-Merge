@@ -3,6 +3,7 @@ package sdk.chat.ui;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,12 +19,12 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-public class ContactListviewAdapter extends ArrayAdapter<DemoContact> {
+public class ContactListviewAdapter extends ArrayAdapter<ContactList> {
 
     Context context;
-    ArrayList<DemoContact> list;
+    ArrayList<ContactList> list;
 
-    public ContactListviewAdapter(Context context, ArrayList<DemoContact> items){
+    public ContactListviewAdapter(Context context, ArrayList<ContactList> items){
         super(context, R.layout.list_row,items);
         this.context = context;
         list = items;
@@ -32,12 +33,20 @@ public class ContactListviewAdapter extends ArrayAdapter<DemoContact> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        if(convertView == null){
+
+        Log.e("GetView", "GetView Called");
+        if(convertView == null) {
+
+
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.list_row,null);
+            convertView = layoutInflater.inflate(R.layout.list_row, null);
+        }
+//            for(int i = 0 ; i<list.size();i++){
+//                Log.e("Contacts Name",list.get(i).getContactName()+"---------------"+list.get(i).getContactNumber());
+//            }
 
             TextView contactName = convertView.findViewById(R.id.contactName);
-            contactName.setText(list.get(position).getName());
+            contactName.setText(list.get(position).getContactName());
 
             ImageButton videoCall = convertView.findViewById(R.id.videoCall);
 
@@ -71,17 +80,24 @@ public class ContactListviewAdapter extends ArrayAdapter<DemoContact> {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(getContext(),AudioActivity.class);
-                    intent.putExtra("  ", list.get(position).getNumber());
+                    intent.putExtra("callee", validPhoneNumber(list.get(position).getContactNumber()));
+
                     getContext().startActivity(intent);
                 }
             });
 
 
 
-        }
         return convertView;
 
     }
 
+    public static String validPhoneNumber(String mobileNumber) {
+        mobileNumber = mobileNumber.replaceAll("[\\s-]+", "");
+        mobileNumber = mobileNumber.substring(mobileNumber.length() - 11);
+        mobileNumber = "88" + mobileNumber;
+
+        return mobileNumber;
+    }
 
 }
